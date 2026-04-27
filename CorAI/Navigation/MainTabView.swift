@@ -29,13 +29,12 @@ struct MainTabView: View {
     // MARK: - Tab Enum
 
     enum Tab: Int, CaseIterable {
-        case live, history, doctor, profile
+        case live, history, profile
 
         var title: String {
             switch self {
             case .live:    return "Live"
             case .history: return "Historial"
-            case .doctor:  return "Doctor"
             case .profile: return "Perfil"
             }
         }
@@ -44,7 +43,6 @@ struct MainTabView: View {
             switch self {
             case .live:    return "waveform.path.ecg"
             case .history: return "clock.arrow.circlepath"
-            case .doctor:  return "stethoscope"
             case .profile: return "person.fill"
             }
         }
@@ -64,8 +62,6 @@ private extension MainTabView {
                 repository: HistoryRepository(),
                 sessionStore: sessionStore
             ))
-        case .doctor:
-            DoctorView()
         case .profile:
             ProfileView()
         }
@@ -118,8 +114,7 @@ private extension MainTabView {
 
             Spacer()
 
-            // Right tabs
-            tabButton(.doctor)
+            // Right tab
             tabButton(.profile)
         }
         .padding(.horizontal, AppSpacing.lg)

@@ -32,6 +32,14 @@ struct RecordingView: View {
         .onAppear {
             viewModel.startRecording()
         }
+        .alert("Error de conexión", isPresented: .constant(viewModel.disconnectionError != nil)) {
+            Button("OK", role: .cancel) {
+                viewModel.disconnectionError = nil
+                dismiss()
+            }
+        } message: {
+            Text(viewModel.disconnectionError ?? "Arduino desconectado")
+        }
     }
 }
 

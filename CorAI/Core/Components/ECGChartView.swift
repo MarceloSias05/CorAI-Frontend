@@ -44,7 +44,7 @@ struct ECGChartView: View {
 // MARK: - ECG Data Generator
 
 /// Generates realistic-looking simulated ECG (PQRST) waveform data.
-enum ECGDataGenerator {
+enum ECGDataGenerator: ECGDataSource {
 
     /// Produce one PQRST complex (normalized to 0…1 range, baseline ~0.5).
     static func generateComplex(sampleCount: Int = 60) -> [Double] {
